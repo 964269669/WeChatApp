@@ -10,7 +10,8 @@
       <image src="/images/iqiyi.png"></image>
     </swiper-item>
   </swiper>
-    <view class="post-container" wx:for="{{posts_key}}">
+  <block wx:for="{{posts_key}}" wx:key="{{index}}">
+    <view class="post-container">
       <view class="post-author-date">
         <image class="post-author" src="{{item.author_img}}"></image> 
         <text class="post-date">{{item.date}}</text>
@@ -26,5 +27,7 @@
         <text class="post-like-font">{{item.view_num}}</text>
       </view> 
     </view>
+  </block>
+    
   
 </view>
