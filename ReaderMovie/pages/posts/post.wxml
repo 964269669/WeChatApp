@@ -1,3 +1,4 @@
+<import src="post-item/post-item-template.wxml"/>
 <view>
   <swiper indicator-dots="true" autoplay="true" interval="2000">
     <swiper-item>
@@ -10,23 +11,9 @@
       <image src="/images/iqiyi.png"></image>
     </swiper-item>
   </swiper>
-  <block wx:for="{{posts_key}}" wx:key="{{index}}">
-    <view class="post-container">
-      <view class="post-author-date">
-        <image class="post-author" src="{{item.author_img}}"></image> 
-        <text class="post-date">{{item.date}}</text>
-      </view>
-      <text class="post-title">{{item.title}}</text>
-      <image class="post-image" src="{{item.post_img}}"></image>
-      <text class="post-content">{{item.content}}
-      </text>
-      <view class="post-like">
-        <image class="post-like-image" src="../../images/icon/chat.png"></image> 
-        <text class="post-like-font">{{item.collect_num}}</text>
-        <image class="post-like-image" src="../../images/icon/view.png"></image>
-        <text class="post-like-font">{{item.view_num}}</text>
-      </view> 
-    </view>
+  <block wx:for="{{posts_key}}" wx:for-item="item" wx:for-index="idx" wx:key="{{index}}">
+    <!-- template -->
+    <template is="postItem" data="{{item}}"/> 
   </block>
     
   
