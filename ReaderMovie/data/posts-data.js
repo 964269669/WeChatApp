@@ -6,7 +6,8 @@ var local_database=[
         avatar:"/images/avatar/1.png",
         content:"菊黄蟹正肥 品尝秋之味。蟹，节肢动物甲壳类，全身有甲壳，头胸甲发达，腹部退化，俗称“脐”，雄的尖脐，雌的团脐。有脚五对，第一对脚成钳状，叫螯，用来捕食和御敌，横着爬行。",
         reading:"112",
-        collection:"96"
+        collection:"96",
+        postId:0
       },
       {
         date:"Nov 25 2016",
@@ -15,7 +16,9 @@ var local_database=[
         avatar:"/images/avatar/2.png",
         content:"李安是一位绝不会重复自己的导演，本片将极富原创性李安众所瞩目的新片《比利·林恩的中场故事》",
         reading:"110",
-        collection:"75"
+        collection:"75",
+        postId:1
+
       },
       {
         //按住alt + shift + F 可以格式化代码样式
@@ -26,6 +29,8 @@ var local_database=[
         collection: 92,
         date: "Nov 12 2016",
         avatar: "/images/avatar/3.png",
+        postId:2
+
        },
        {
         title: "微信·小程序开发工具安装指南",
@@ -34,7 +39,8 @@ var local_database=[
         reading: 102,
         collection: 92,
         date: "Nov 20 2016",
-        avatar: "/images/avatar/5.png"
+        avatar: "/images/avatar/5.png",
+        postId:3
       },
       {
         title: "从视觉到触觉 这款VR手套能给你真实触感",
@@ -43,7 +49,8 @@ var local_database=[
         reading: 102,
         collection: 26,
         date: "Nov 20 2016",
-        avatar: "../../../images/avatar/3.png"
+        avatar: "../../../images/avatar/3.png",
+        postId:4
        }
     ]
 
