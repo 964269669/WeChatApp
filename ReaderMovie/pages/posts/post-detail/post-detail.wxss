@@ -1,5 +1,4 @@
 .container{
-<<<<<<< HEAD
   	display: flex;
   	flex-direction:column;
 }
@@ -76,8 +75,4 @@
 	line-height: 44rpx;
 	letter-spacing: 2px;
 }
-=======
-  display: flex;
-  flex-direction:column;
-}
->>>>>>> dbe7570ec4546b6432be90d960c42e877e5b3fb6
+

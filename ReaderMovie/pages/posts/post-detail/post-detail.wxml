@@ -1,5 +1,4 @@
 <view class="container">
-<<<<<<< HEAD
   <image class="head-image" src="/images/post/sls.jpg"></image>
   <view class="author-data">
     <image class="avatar" src="/images/avatar/2.png"></image>
@@ -16,22 +15,4 @@
     <view class="horizon"></view>
   </view>
   <text class="detail">路试穿戳啥破坏啊搜皮带护发斯蒂芬我asODF【啊搜皮带我发送到泼妇撒旦</text>
-=======
-  <image src="/images/post/sls.jpg"></image>
-  <view>
-    <image src="/images/avatar/2.png"></image>
-    <text>胡歌</text>
-    <text>发表于</text>
-    <text>三天前</text>
-  </view>
-  <text>炉石传说好玩吗</text>
-  <view>
-    <view>
-      <iamge src="/images/icon/collection.png"></iamge>
-      <iamge src="/images/icon/share.png"></iamge>
-    </view>
-    <view></view>
-  </view>
-  <text>路试穿戳啥破坏啊搜皮带护发斯蒂芬我asODF【啊搜皮带我发送到泼妇撒旦</text>
->>>>>>> dbe7570ec4546b6432be90d960c42e877e5b3fb6
 </view>
