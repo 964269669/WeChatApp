@@ -12,9 +12,12 @@
     </swiper-item>
   </swiper>
   <block wx:for="{{posts_key}}" wx:for-item="item" wx:for-index="idx" wx:key="{{index}}">
-    <!-- template -->
-    <template is="postItem" data="{{item}}"/> 
+    <!-- template template只是占位的，页面渲染完就没有了。所以要外面套一层view加事件--> <!--这里加三个点 相当于直接把当前对象平铺，在模板页面就不需要加item.了  -->
+    <view catchtap="onPostTap" data-postId="{{item.postId}}">
+      <template is="postItem" data="{{...item}}"/> 
+    </view>
+    
   </block>
     
-  
+ 
 </view>
