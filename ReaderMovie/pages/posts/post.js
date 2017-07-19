@@ -4,7 +4,6 @@ Page({
   data:{
 
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -23,7 +22,7 @@ Page({
     var postId=event.currentTarget.dataset.postid;
     // console.log("postTap函数"+postId)
     wx.navigateTo({
-      url:"post-detail/post-detail"
+      url:"post-detail/post-detail?id="+postId
     })
   }
 

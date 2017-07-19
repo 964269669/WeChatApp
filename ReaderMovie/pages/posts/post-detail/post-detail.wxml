@@ -1,13 +1,13 @@
 <view class="container">
-  <image class="head-image" src="/images/post/sls.jpg"></image>
+  <image class="head-image" src="{{postData_key.headImgSrc}}"></image>
   <image class="audio" src="/images/music/music-start.png"></image>
   <view class="author-data">
-    <image class="avatar" src="/images/avatar/2.png"></image>
-    <text class="author">胡歌</text>
+    <image class="avatar" src="{{postData_key.avatar}}"></image>
+    <text class="author">{{postData_key.author}}</text>
     <text class="const-test">发表于</text>
-    <text class="date">三天前</text>
+    <text class="date">{{postData_key.dateTime}}</text>
   </view>
-  <text class="title">炉石传说好玩吗</text>
+  <text class="title">{{postData_key.title}}</text>
   <view class="tool">
     <view class="circle-img">
       <image src="/images/icon/collection.png"></image>
@@ -15,5 +15,5 @@
     </view>
     <view class="horizon"></view>
   </view>
-  <text class="detail">路试穿戳啥破坏啊搜皮带护发斯蒂芬我asODF【啊搜皮带我发送到泼妇撒旦</text>
+  <text class="detail">{{postData_key.detail}}</text>
 </view>
