@@ -111,6 +111,16 @@ Page({
         // })
       }
     })
+  },
+  //音乐功能
+  onMusicTap:function(event){
+    console.log(1);
+    wx.playBackgroundAudio({
+      //本地文件不可以 必须是网络流媒体
+      dataUrl:"http://ws.stream.qqmusic.qq.com/C100000Zn0vS4fKKo8.m4a?fromtag=38",
+      title:"沉默是金-",
+      coverimgUrl:"http://y.gtimg.cn/music/photo_new/T002R150x150M000003at0mJ2YrR2H.jpg?max_age=2592000"
+    })
   }
   
 })
