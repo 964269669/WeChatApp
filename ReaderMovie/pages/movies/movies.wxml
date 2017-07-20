@@ -1,0 +1,6 @@
+<import src="movie/movie-template.wxml" />
+<view>
+  <template is="movieTemplate" />  
+  <template is="movieTemplate" />  
+  <template is="movieTemplate" />  
+</view>
