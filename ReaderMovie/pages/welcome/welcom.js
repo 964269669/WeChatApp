@@ -8,14 +8,18 @@ Page({
   
   },
 
-  onContainerTap:function(){
+  onTap:function(){
    /* //导航路由  页面跳转  
    从父跳转到子，可以返回，父子级深度最多五级,调用了生命周期的onHide方法，也就是父页面被隐藏
     wx.navigateTo({
       url:"../posts/post"
     });*/
     // 页面之间平行跳转 不能返回，调用了生命周期的unLoad方法
-    wx.redirectTo({
+    // wx.redirectTo({
+    //   url:"../posts/post"
+    // })
+    //跳转到一个有tab的页面
+    wx.switchTab({
       url:"../posts/post"
     })
 

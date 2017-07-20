@@ -24,6 +24,15 @@ Page({
     wx.navigateTo({
       url:"post-detail/post-detail?id="+postId
     })
+  },
+  onSwiperTap:function(event){
+    //target和currentTarget
+    //target指的是当前点击的组件(image);
+    //currentTarget指的是事件捕获的组件(swiper)
+    var postId=event.target.dataset.postid;
+    wx.navigateTo({
+      url:"post-detail/post-detail?id="+postId
+    })
   }
 
   
