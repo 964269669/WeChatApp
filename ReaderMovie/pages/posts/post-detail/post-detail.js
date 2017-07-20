@@ -1,9 +1,12 @@
-var postsData=require('../../../data/posts-data.js')
+var postsData=require('../../../data/posts-data.js');
+var app=getApp();//拿到全局app变量
+
 Page({
   data:{
-
+    isPlayingMusic:false
   },
   onLoad:function(option){
+    var globalData=app.globalData;
     var postId=option.id;
     //中转postId
     this.data.currentPostId=postId;
@@ -26,7 +29,27 @@ Page({
       postsCollected[postId]=false;
       wx.setStorageSync("posts_collected",postsCollected);
     }
+
+    if(app.globalData.g_isPlayingMusic && app.globalData.g_currentMusicPostId===postId){
+      this.setData({isPlayingMusic:true})
+    }
+    this.setMusicMonitor();
     
+  },
+  setMusicMonitor:function(){
+    //监听音乐事件
+    var that=this;
+    wx.onBackgroundAudioPlay(function(){
+      that.setData({isPlayingMusic:true})
+    });
+    app.globalData.g_isPlayingMusic=true;
+    app.globalData.g_currentMusicPostId=that.data.currentPostId;
+
+    wx.onBackgroundAudioPause(function(){
+      that.setData({isPlayingMusic:false})
+    });
+    app.globalData.g_isPlayingMusic=false;
+    app.globalData.g_currentMusicPostId=null;
   },
   //收藏功能
   onCollectionTap:function(event){
@@ -114,13 +137,27 @@ Page({
   },
   //音乐功能
   onMusicTap:function(event){
-    console.log(1);
-    wx.playBackgroundAudio({
-      //本地文件不可以 必须是网络流媒体
-      dataUrl:"http://ws.stream.qqmusic.qq.com/C100000Zn0vS4fKKo8.m4a?fromtag=38",
-      title:"沉默是金-",
-      coverimgUrl:"http://y.gtimg.cn/music/photo_new/T002R150x150M000003at0mJ2YrR2H.jpg?max_age=2592000"
-    })
+    var currentPostId=this.data.currentPostId;
+    var postData=postsData.postList[currentPostId];
+    var isPlayingMusic=this.data.isPlayingMusic;
+    if(isPlayingMusic){
+      wx.pauseBackgroundAudio();
+      this.setData({
+        isPlayingMusic:false
+      })
+    }else{
+       wx.playBackgroundAudio({
+        //本地文件不可以 必须是网络流媒体
+        dataUrl:postData.music.url,
+        title:postData.music.title,
+        coverimgUrl:postData.music.coverImg
+      })
+      this.setData({
+        isPlayingMusic:true
+      })
+    
+    }
+    
   }
   
 })
