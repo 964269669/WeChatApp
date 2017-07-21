@@ -62,9 +62,9 @@ Page({
       movies.push(temp);
     }
 
-    this.setData({
-      movies:movies
-    })
+    var readyData={};
+    readyData[settedKey]=movies;
+    this.setData(readyData);
   },
 
   /**
