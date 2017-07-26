@@ -37,7 +37,7 @@ Page({
       },
       success:function(res){
         console.log(res.data);
-        that.processDoubanData(res.data)
+        that.processDoubanData(res.data,settedKey)
       },
       fail:function(){
         console.log("失败")
@@ -45,7 +45,7 @@ Page({
     })
   },
 
-  processDoubanData:function(moviesDouban){
+  processDoubanData:function(moviesDouban,settedKey){
     var movies=[];
     for(var idx in moviesDouban.subjects){
       var subject=moviesDouban.subjects[idx];
@@ -63,8 +63,11 @@ Page({
     }
 
     var readyData={};
-    readyData[settedKey]=movies;
+    readyData[settedKey]={
+      movies:movies
+    };
     this.setData(readyData);
+    console.log(readyData)
   },
 
   /**
