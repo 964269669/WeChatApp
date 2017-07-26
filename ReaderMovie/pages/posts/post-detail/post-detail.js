@@ -33,6 +33,7 @@ Page({
       wx.setStorageSync("posts_collected",postsCollected);
     }
 
+    //如果全局g_isPlayingMusic在播放并且全局id等于当前播放的id
     if(app.globalData.g_isPlayingMusic && app.globalData.g_currentMusicPostId===postId){
       this.setData({isPlayingMusic:true})
     }
@@ -40,21 +41,7 @@ Page({
     
   },
 
-  setMusicMonitor:function(){
-    //监听音乐事件
-    var that=this;
-    wx.onBackgroundAudioPlay(function(){
-      that.setData({isPlayingMusic:true})
-    });
-    app.globalData.g_isPlayingMusic=true;
-    app.globalData.g_currentMusicPostId=that.data.currentPostId;
-
-    wx.onBackgroundAudioPause(function(){
-      that.setData({isPlayingMusic:false})
-    });
-    app.globalData.g_isPlayingMusic=false;
-    app.globalData.g_currentMusicPostId=null;
-  },
+  
 
   //收藏功能
   onCollectionTap:function(event){
@@ -144,10 +131,12 @@ Page({
       }
     })
   },
+
   //音乐功能
   onMusicTap:function(event){
     //获取当前postId
     var currentPostId=this.data.currentPostId;
+    //当前项数据
     var postData=postsData.postList[currentPostId];
     var isPlayingMusic=this.data.isPlayingMusic;
     //如果正在播放就停止
@@ -167,10 +156,27 @@ Page({
       //更新绑定数据
       this.setData({
         isPlayingMusic:true
-      })
-    
+      })   
     }
     
+  },
+  //监听音乐事件
+  setMusicMonitor:function(){
+    var that=this;
+    //监听音乐播放事件
+    wx.onBackgroundAudioPlay(function(){
+      that.setData({isPlayingMusic:true})
+    });
+    app.globalData.g_isPlayingMusic=true;
+    //当前播放的id
+    app.globalData.g_currentMusicPostId=that.data.currentPostId;
+    //监听音乐停止事件
+    wx.onBackgroundAudioPause(function(){
+      that.setData({isPlayingMusic:false})
+    });
+    app.globalData.g_isPlayingMusic=false;
+    //音乐暂停 清空当前播放id
+    app.globalData.g_currentMusicPostId=null;
   }
   
 })
