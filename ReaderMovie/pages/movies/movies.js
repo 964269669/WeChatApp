@@ -47,17 +47,19 @@ Page({
 
   processDoubanData:function(moviesDouban,settedKey){
     var movies=[];
+    //遍历三条电影数据对象数组
     for(var idx in moviesDouban.subjects){
+      //当前电影条目
       var subject=moviesDouban.subjects[idx];
       var title=subject.title;
       if(title.length>=6){
         title=title.substring(0,6)+"...";
       }
       var temp={
-        title:title,
-        average:subject.rating.average,
-        coverageUrl:subject.images.large,
-        movieId:subject.id
+        title:title,//电影名称
+        average:subject.rating.average,//评分
+        coverageUrl:subject.images.large,//封面
+        movieId:subject.id//编号
       };
       movies.push(temp);
     }
