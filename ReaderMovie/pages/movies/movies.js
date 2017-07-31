@@ -25,12 +25,12 @@ Page({
     var comingSoonUrl=app.globalData.doubanBase+"/v2/movie/coming_soon"+"?start=0&count=3";
     var top250Url=app.globalData.doubanBase+"/v2/movie/top250"+"?start=0&count=3";
     
-    this.getMovieListData(inTheatersUrl,"inTheaters");
-    this.getMovieListData(comingSoonUrl,"coming_soon");
-    this.getMovieListData(top250Url,"top250");
+    this.getMovieListData(inTheatersUrl,"inTheaters","正在热映");
+    this.getMovieListData(comingSoonUrl,"coming_soon","即将上映");
+    this.getMovieListData(top250Url,"top250","Top250");
   },
   //发送请求获取数据
-  getMovieListData:function(url,settedKey){
+  getMovieListData:function(url,settedKey,categoryTitle){
     var that=this;
     //小程序请求用这个
     wx.request({
@@ -43,7 +43,7 @@ Page({
       success:function(res){
         console.log(res.data);
         //成功的回调中调用处理数据的函数
-        that.processDoubanData(res.data,settedKey)
+        that.processDoubanData(res.data,settedKey,categoryTitle)
       },
       fail:function(){
         console.log("失败")
@@ -51,7 +51,7 @@ Page({
     })
   },
   //处理数据的函数
-  processDoubanData:function(moviesDouban,settedKey){
+  processDoubanData:function(moviesDouban,settedKey,categoryTitle){
     var movies=[];
     //遍历三条电影数据对象数组
     for(var idx in moviesDouban.subjects){
@@ -74,7 +74,8 @@ Page({
     //利用js对象动态特性
     var readyData={};
     readyData[settedKey]={
-      movies:movies
+      movies:movies,
+      categoryTitle:categoryTitle
     };
     this.setData(readyData);
     console.log(readyData)
