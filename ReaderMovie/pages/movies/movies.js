@@ -1,3 +1,5 @@
+var util = require('../../utils/util.js')
+
 //获取全局变量
 var app=getApp();
 
@@ -8,9 +10,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // inTheaters:{},
-    // coming_soon:{},
-    // top250:{}
+    //如果是对象 最好在这定义一下 赋初值
+    inTheaters:{},
+    coming_soon:{},
+    top250:{}
   },
 
   /**
@@ -59,6 +62,7 @@ Page({
         title=title.substring(0,6)+"...";
       }
       var temp={
+        stars:util.convertToStarsArray(subject.rating.stars),
         title:title,//电影名称
         average:subject.rating.average,//评分
         coverageUrl:subject.images.large,//封面

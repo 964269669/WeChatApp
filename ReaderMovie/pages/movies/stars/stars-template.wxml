@@ -1,11 +1,16 @@
 <template name="starsTemplate">
   <view class="stars-container">
     <view class="stars">
-      <image src="/images/icon/star.png"></image>
-      <image src="/images/icon/star.png"></image>
-      <image src="/images/icon/star.png"></image>
-      <image src="/images/icon/star.png"></image>
-      <image src="/images/icon/star.png"></image>
+      <!-- 最好加一层block stars数组中存储的是1或者0如果当前项是1表示实心星星，0表示空心星星-->
+      <!-- 假如有半颗星星 可以找一个数字表示半颗 三颗半[1,1,1,2,0]-->
+      <block wx:for="{{stars}}" wx:for-item="i" wx:key="index">
+          <image wx:if="{{i}}" src="/images/icon/star.png"></image>
+          <image wx:else src="/images/icon/none-star.png"></image>
+           <!-- 假如是三颗半 if等于1的时候  elif等于2的时候-->
+          <!--<image wx:if="{{i==1}}" src="/images/icon/star.png"></image>
+          <image wx:elif="{{i==2}}" src="/images/icon/star.png"></image>
+          <image wx:else src="/images/icon/star.png"></image> -->
+      </block>
     </view>
     <text class="star-score">{{average}}</text>
 
