@@ -8,15 +8,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    inTheaters:{},
-    coming_soon:{},
-    top250:{}
+    // inTheaters:{},
+    // coming_soon:{},
+    // top250:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //三个分类数据的地址
     var inTheatersUrl=app.globalData.doubanBase+"/v2/movie/in_theaters"+"?start=0&count=3";
     var comingSoonUrl=app.globalData.doubanBase+"/v2/movie/coming_soon"+"?start=0&count=3";
     var top250Url=app.globalData.doubanBase+"/v2/movie/top250"+"?start=0&count=3";
@@ -25,6 +26,7 @@ Page({
     this.getMovieListData(comingSoonUrl,"coming_soon");
     this.getMovieListData(top250Url,"top250");
   },
+  //发送请求获取数据
   getMovieListData:function(url,settedKey){
     var that=this;
     //小程序请求用这个
@@ -37,6 +39,7 @@ Page({
       },
       success:function(res){
         console.log(res.data);
+        //成功的回调中调用处理数据的函数
         that.processDoubanData(res.data,settedKey)
       },
       fail:function(){
@@ -44,7 +47,7 @@ Page({
       }
     })
   },
-
+  //处理数据的函数
   processDoubanData:function(moviesDouban,settedKey){
     var movies=[];
     //遍历三条电影数据对象数组
@@ -64,6 +67,7 @@ Page({
       movies.push(temp);
     }
 
+    //利用js对象动态特性
     var readyData={};
     readyData[settedKey]={
       movies:movies
