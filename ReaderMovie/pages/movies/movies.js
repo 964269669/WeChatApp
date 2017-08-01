@@ -13,7 +13,9 @@ Page({
     //如果是对象 最好在这定义一下 赋初值
     inTheaters:{},
     coming_soon:{},
-    top250:{}
+    top250:{},
+    containerShow:true,
+    searchPannelShow:false
   },
 
   /**
@@ -56,6 +58,22 @@ Page({
       fail:function(){
         console.log("失败")
       }
+    })
+  },
+  //点击八叉关闭
+  onCancelImgTap:function(event){
+    this.setData({
+      containerShow:true,
+      searchPanelShow:false
+      // searchResult:{}
+    })
+  },
+
+  //获得焦点显示
+  onBindFocus:function(event){
+    this.setData({
+      containerShow:false,
+      searchPanelShow:true
     })
   },
   //处理数据的函数
