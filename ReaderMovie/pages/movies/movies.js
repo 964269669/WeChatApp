@@ -27,8 +27,16 @@ Page({
     
     this.getMovieListData(inTheatersUrl,"inTheaters","正在热映");
     this.getMovieListData(comingSoonUrl,"coming_soon","即将上映");
-    this.getMovieListData(top250Url,"top250","Top250");
+    this.getMovieListData(top250Url,"top250","豆瓣电影Top250");
   },
+  //更多函数  传递当前点击的分类
+  onMoreTap:function(event){
+    var category=event.currentTarget.dataset.category;
+    wx.navigateTo({
+      url:"more-movie/more-movie?category="+category
+    })
+  },
+
   //发送请求获取数据
   getMovieListData:function(url,settedKey,categoryTitle){
     var that=this;
@@ -78,55 +86,6 @@ Page({
       categoryTitle:categoryTitle
     };
     this.setData(readyData);
-    console.log(readyData)
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    
+    // console.log(readyData)
   }
 })

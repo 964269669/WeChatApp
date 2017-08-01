@@ -14,8 +14,29 @@ function convertToStarsArray(stars){
   return array;
 }
 
+//发送请求获取数据
+function http(url,callback){
+    wx.request({
+      url: url,
+      method:"GET",
+      //这里写"Content-Type":"application/xml"，能行，写成"Content-Type":""也能行，估计写成其他的也可以唯独写成json报错,也许是豆瓣的问题
+      header:{
+        "Content-Type":"application/xml"
+      },
+      success:function(res){
+        // console.log(res.data);
+        //成功的回调中调用处理数据的函数
+        callback(res.data);
+      },
+      fail:function(){
+        console.log("失败")
+      }
+    })
+}
+  
 module.exports={
-  convertToStarsArray:convertToStarsArray
+  convertToStarsArray:convertToStarsArray,
+  http:http
 }
 
 

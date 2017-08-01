@@ -12,7 +12,7 @@
           <image wx:else src="/images/icon/star.png"></image> -->
       </block>
     </view>
-    <text class="star-score">{{average}}</text>
+    <text class="star-score">{{score}}</text>
 
   </view>
 </template>
