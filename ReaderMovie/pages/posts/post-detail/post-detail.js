@@ -165,18 +165,28 @@ Page({
     var that=this;
     //监听音乐播放事件
     wx.onBackgroundAudioPlay(function(){
-      that.setData({isPlayingMusic:true})
+      that.setData({isPlayingMusic:true});
+      app.globalData.g_isPlayingMusic=true;
+      //当前播放的id
+      app.globalData.g_currentMusicPostId=that.data.currentPostId;
     });
-    app.globalData.g_isPlayingMusic=true;
-    //当前播放的id
-    app.globalData.g_currentMusicPostId=that.data.currentPostId;
+    
     //监听音乐停止事件
     wx.onBackgroundAudioPause(function(){
-      that.setData({isPlayingMusic:false})
+      that.setData({isPlayingMusic:false});
+      app.globalData.g_isPlayingMusic=false;
+      //音乐暂停 清空当前播放id
+      app.globalData.g_currentMusicPostId=null;
     });
-    app.globalData.g_isPlayingMusic=false;
-    //音乐暂停 清空当前播放id
-    app.globalData.g_currentMusicPostId=null;
+    
+    //监听音乐停止事件
+    wx.onBackgroundAudioStop(function(){
+      that.setData({isPlayingMusic:false});
+      app.globalData.g_isPlayingMusic=false;
+      //音乐停止 清空当前播放id
+      app.globalData.g_currentMusicPostId=null;
+    });
+
   }
   
 })
