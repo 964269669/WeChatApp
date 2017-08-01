@@ -14,6 +14,7 @@ Page({
     inTheaters:{},
     coming_soon:{},
     top250:{},
+    searchResult:{},
     containerShow:true,
     searchPannelShow:false
   },
@@ -60,12 +61,12 @@ Page({
       }
     })
   },
-  //点击八叉关闭
+  //点击×关闭
   onCancelImgTap:function(event){
     this.setData({
       containerShow:true,
-      searchPanelShow:false
-      // searchResult:{}
+      searchPanelShow:false,
+      searchResult:{}//再次进入搜索 清空前一次
     })
   },
 
@@ -75,6 +76,14 @@ Page({
       containerShow:false,
       searchPanelShow:true
     })
+  },
+  //搜索功能
+  onBindChange:function(event){
+    var text=event.detail.value;
+    console.log(text);
+    var searchUrl=app.globalData.doubanBase+"/v2/movie/search?q="+text;
+    this.getMovieListData(searchUrl,"searchResult","");
+
   },
   //处理数据的函数
   processDoubanData:function(moviesDouban,settedKey,categoryTitle){
