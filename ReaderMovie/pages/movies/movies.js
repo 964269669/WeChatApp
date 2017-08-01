@@ -32,14 +32,21 @@ Page({
     this.getMovieListData(comingSoonUrl,"coming_soon","即将上映");
     this.getMovieListData(top250Url,"top250","豆瓣电影Top250");
   },
-  //更多函数  传递当前点击的分类
+
+  //点击跳转更多  传递当前点击的分类
   onMoreTap:function(event){
     var category=event.currentTarget.dataset.category;
     wx.navigateTo({
-      url:"more-movie/more-movie?category="+category
+      url:"more-movie/more-movie?movieId="+category
     })
   },
-
+  //点击跳转详情页
+  onMovieTap:function(event){
+    var movieId=event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url:"movie-detail/movie-detail?id="+movieId
+    })
+  },
   //发送请求获取数据
   getMovieListData:function(url,settedKey,categoryTitle){
     var that=this;
