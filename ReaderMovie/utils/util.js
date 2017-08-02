@@ -33,10 +33,34 @@ function http(url,callback){
       }
     })
 }
+
+// 演员名字拼接 如：  成龙/张曼玉/林青霞
+function convertToCastString(casts) {
+  var castsjoin = "";
+  for (var idx in casts) {
+    castsjoin = castsjoin + casts[idx].name + " / ";
+  }
+  return castsjoin.substring(0, castsjoin.length - 2);
+}
+
+//
+function convertToCastInfos(casts) {
+  var castsArray = []
+  for (var idx in casts) {
+    var cast = {
+      img: casts[idx].avatars ? casts[idx].avatars.large : "",
+      name: casts[idx].name
+    }
+    castsArray.push(cast);
+  }
+  return castsArray;
+}
   
 module.exports={
   convertToStarsArray:convertToStarsArray,
-  http:http
+  http:http,
+  convertToCastInfos:convertToCastInfos,
+  convertToCastString:convertToCastString
 }
 
 

@@ -169,9 +169,8 @@ Page({
       app.globalData.g_isPlayingMusic=true;
       //当前播放的id
       app.globalData.g_currentMusicPostId=that.data.currentPostId;
-    });
-    
-    //监听音乐停止事件
+    });   
+    //监听音乐暂停事件
     wx.onBackgroundAudioPause(function(){
       that.setData({isPlayingMusic:false});
       app.globalData.g_isPlayingMusic=false;

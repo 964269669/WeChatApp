@@ -59,7 +59,7 @@ Page({
         "Content-Type":"application/xml"
       },
       success:function(res){
-        console.log(res.data);
+        // console.log(res.data);
         //成功的回调中调用处理数据的函数
         that.processDoubanData(res.data,settedKey,categoryTitle)
       },

@@ -35,7 +35,7 @@ Page({
     util.http(dataUrl,this.processDoubanData);
   },
 
-  //下滑加载更多
+  //上滑加载更多
   onScrollLower:function(event){
     //更新请求开始条目
     var nextUrl=this.data.requestUrl+"?start="+this.data.totalCount+"&count=20";
@@ -48,6 +48,7 @@ Page({
     var refreshUrl=this.data.requestUrl+"?start=0&count=20";
     //刷新时要清空数据改变状态
     this.data.movies={};
+    this.data.totalCount=0;
     this.data.isEmpty=true;
 
     //请求数据函数
