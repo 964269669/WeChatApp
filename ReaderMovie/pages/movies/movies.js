@@ -37,7 +37,7 @@ Page({
   onMoreTap:function(event){
     var category=event.currentTarget.dataset.category;
     wx.navigateTo({
-      url:"more-movie/more-movie?movieId="+category
+      url:"more-movie/more-movie?category="+category
     })
   },
   //点击跳转详情页

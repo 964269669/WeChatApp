@@ -58,6 +58,7 @@ Page({
 
   //处理数据的函数
   processDoubanData:function(moviesDouban){
+    console.log(moviesDouban)
     var movies=[];
     //遍历三条电影数据对象数组
     for(var idx in moviesDouban.subjects){
@@ -102,8 +103,14 @@ Page({
     wx.setNavigationBarTitle({
       title:this.data.navigateTitle,
     })
-  }
-
+  },
+  //跳转详情页
+  onMovieTap: function (event) {
+    var movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + movieId
+    })
+  },
   
   
 })
