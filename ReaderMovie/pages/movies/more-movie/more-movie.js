@@ -36,7 +36,7 @@ Page({
   },
 
   //上滑加载更多
-  onScrollLower:function(event){
+  onReachBottom:function(event){
     //更新请求开始条目
     var nextUrl=this.data.requestUrl+"?start="+this.data.totalCount+"&count=20";
     util.http(nextUrl,this.processDoubanData);
